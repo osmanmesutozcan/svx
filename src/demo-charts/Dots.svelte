@@ -17,15 +17,15 @@
     const y = d => d[1];
     const z = d => d[2];
 
-    const xMax = width;
-    const yMax = height - 80;
+    $: xMax = width;
+    $: yMax = height - 80;
 
-    const xScale = scaleLinear({
+    $: xScale = scaleLinear({
         domain: [1.3, 2.2],
         range: [0, xMax],
         clamp: true
     });
-    const yScale = scaleLinear({
+    $: yScale = scaleLinear({
         domain: [0.75, 1.6],
         range: [yMax, 0],
         clamp: true
