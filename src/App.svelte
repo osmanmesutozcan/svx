@@ -57,13 +57,17 @@
         justify-content: center;
     }
 
+    .logo {
+        font-weight: 600;
+    }
+
     span:nth-child(2) {
         margin: 0 5px;
     }
 </style>
 
 <nav>
-    <span>SVX</span>
+    <span class="logo">SVX</span>
 </nav>
 
 <div bind:this={demoContainer} class="demo">
@@ -81,7 +85,8 @@
 <svelte:head>
     <style>
         body {
-            margin: 0
+            margin: 0;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
         }
     </style>
 </svelte:head>

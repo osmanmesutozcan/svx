@@ -2,17 +2,14 @@
     import {line} from 'd3-shape';
 
     let {
+        x,
+        y,
         curve,
         fill = 'transparent',
         defined = () => true,
-        data: _data,
-        x: _x,
-        y: _y,
+        data = [],
         ...rest
     } = $$props;
-    export let x;
-    export let y;
-    export let data = [];
 
     let path;
     $: $$props, path = createPath();

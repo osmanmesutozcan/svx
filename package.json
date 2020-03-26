@@ -1,9 +1,8 @@
 {
-    "name": "svelte-component-library-template",
+    "name": "@svx/components",
     "version": "0.0.1",
-    "description": "My Svelte Components",
+    "description": "Svelte D3 Components. A port of React's Vx.",
     "svelte": "src/index.js",
-    "private": true,
     "scripts": {
         "build": "rollup -c",
         "autobuild": "rollup -c -w",
