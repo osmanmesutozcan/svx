@@ -1,6 +1,6 @@
 {
     "name": "@svx/components",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Svelte D3 Components. A port of React's Vx.",
     "svelte": "src/index.js",
     "scripts": {
