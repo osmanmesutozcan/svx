@@ -5,6 +5,7 @@
     export let y = 0;
     export let dx = 0;
     export let dy = 0;
+    export let text = '';
     export let angle;
     export let width;
     export let transform;
@@ -18,7 +19,7 @@
     const SVG_STYLE = 'overflow: visible;';
 
     const transforms = [transform];
-    const wordsByLines = [{ words: ['yay. looking hot'], width: 80 }];
+    const wordsByLines = [{ words: [text], width: 80 }];
     let startDy;
 
     if (verticalAnchor === 'start') {
@@ -50,7 +51,7 @@
 </script>
 
 <svg x={dx} y={dy} font-size={textProps.fontSize} style={SVG_STYLE}>
-    <text transform={transforms.join(' ')} {...textProps} text-anchor={textAnchor}>
+    <text transform={transforms.join(' ')} x={x} y={y} text-anchor={textAnchor} {...textProps}>
         {#each wordsByLines as {words}, i}
             <tspan x={x} dy={i === 0 ? startDy : lineHeight}>
                 {words.join(' ')}

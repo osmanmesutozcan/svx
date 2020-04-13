@@ -10,7 +10,6 @@
     import { toNumberOrUndefined } from './utils/toNumberOrUndefined';
     import { labelTransform } from './utils/labelTransform';
 
-
     let {
         children,
         axisClassName,
@@ -38,9 +37,9 @@
         tickClassName,
         tickFormat,
         tickLabelProps = (/** tickValue, index */) => ({
-            textAnchor: 'middle',
-            fontFamily: 'Arial',
-            fontSize: 10,
+            'text-anchor': 'middle',
+            'font-family': 'Arial',
+            'font-size': 10,
             fill: '#222',
         }),
         tickLength = 8,
@@ -51,8 +50,6 @@
         top = 0,
     } = $$props;
 
-    const values = (tickValues || (scale.ticks ? scale.ticks(numTicks) : scale.domain()))
-            .map((val, idx) => ({ val, idx }));
 
     const format = tickFormat || (scale.tickFormat ? scale.tickFormat() : toString);
 
@@ -97,7 +94,6 @@
         const tickYCoord = tickToPoint.y + (axisIsHorizontal && !isTop ? tickLabelFontSize : 0);
         const formattedValue = format(val, idx);
 
-        console.log('from', tickFromPoint);
         return {
             val,
             idx,
@@ -109,24 +105,41 @@
         };
     }
 
-    let tickCursor;
+    let values = (tickValues || (scale.ticks ? scale.ticks(numTicks) : scale.domain()))
+            .map((val, idx) => ({ val: calculateProps(val, idx), idx }));
+
+    if (hideZero) {
+        values.slice(1);
+    }
 </script>
 
 <Group {top} {left}>
     {#each values as {val, idx}}
-        {tickCursor = calculateProps(val, idx)}
         <Group transform={tickTransform}>
             <Line
-                    from={tickCursor.tickFromPoint}
-                    to={tickCursor.tickToPoint}
+                    from={val.tickFromPoint}
+                    to={val.tickToPoint}
                     stroke={tickStroke}
                     strokeLinecap="square"
+            />
+            <Text
+                    x={val.tickToPoint.x}
+                    y={val.tickYCoord}
+                    text={val.formattedValue}
+                    {...val.tickLabelPropsObj}
             />
         </Group>
     {/each}
     {#if label}
-        <Text {...labelTransform({ labelOffset, labelProps, orientation, range, tickLabelFontSize, tickLength })}>
-            {label}
-        </Text>
+        <Text
+                text="Left Axis Label"
+                {...labelTransform({
+                    labelOffset,
+                    labelProps,
+                    orientation,
+                    range,
+                    tickLabelFontSize,
+                    tickLength
+                })}/>
     {/if}
 </Group>
