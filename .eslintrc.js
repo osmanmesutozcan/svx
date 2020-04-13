@@ -19,7 +19,8 @@ module.exports = {
     ],
     rules: {
         'comma-dangle': ['error', 'always-multiline'],
+        'semi': 2,
     },
     settings: {},
     extends: ['plugin:prettier/recommended'],
-}
+};

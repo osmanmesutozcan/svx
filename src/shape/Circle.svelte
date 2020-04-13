@@ -1,5 +1,5 @@
 <script>
-    let {r, ...rest} = $$props;
+    let { r, ...rest } = $$props;
 </script>
 
 <circle

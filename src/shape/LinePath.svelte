@@ -1,5 +1,5 @@
 <script>
-    import {line} from 'd3-shape';
+    import { line } from 'd3-shape';
 
     let {
         x,

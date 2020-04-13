@@ -7,6 +7,6 @@
 <LinearGradient
         {id}
         {...$$props}
-        from='#F54EA2'
-        to='#FF7676'
+        from='#FCE38A'
+        to='#F38181'
 />
